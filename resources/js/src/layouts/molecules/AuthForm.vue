@@ -1,10 +1,6 @@
 <template>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">
-                {{ this.type == "login" ? "Login" : "Register" }} As
-                {{ this.userType == "admin" ? "Admin" : "Agent" }}
-            </h5>
             <form>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
@@ -28,9 +24,22 @@
                         placeholder="Password"
                     />
                 </div>
-                <button type="submit" class="btn btn-primary">
-                    Submit
-                </button>
+                <div class="form-group container">
+                    <div class="row">
+                        <button
+                            type="submit"
+                            class="btn btn-primary col-md-3 col-sm-4 mr-md-2 mt-2"
+                        >
+                            Login
+                        </button>
+                        <button
+                            type="submit"
+                            class="btn btn-success col-md-3 col-sm-4 mt-2"
+                        >
+                            Register
+                        </button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
