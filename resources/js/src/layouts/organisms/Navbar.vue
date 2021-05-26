@@ -27,7 +27,12 @@
                     <a class="nav-link" href="#">Follow Up Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">History</a>
+                    <a
+                        class="nav-link"
+                        href="#"
+                        v-on:click="onClickContactHistory"
+                        >History</a
+                    >
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -49,6 +54,9 @@ export default {
         },
         onClickContactManagement() {
             this.$router.push("/contact");
+        },
+        onClickContactHistory() {
+            this.$router.push("/history");
         }
     }
 };

@@ -2,6 +2,8 @@ import Auth from '../layouts/pages/auth/Auth.vue'
 
 import Home from '../layouts/pages/home/Home.vue'
 import ContactManagement from '../layouts/pages/contact-management/ContactManagement'
+import ContactHistory from '../layouts/pages/contact-history/ContactHistory'
+
 
 const routes = [
     {
@@ -28,6 +30,14 @@ const routes = [
         meta: {
             guest: true,
         }
-    }
+    },
+    {
+        path: '/history',
+        name: 'history',
+        component: ContactHistory,
+        meta: {
+            guest: true,
+        }
+    },
 ]
 export default routes
