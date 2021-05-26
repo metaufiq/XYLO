@@ -28,5 +28,17 @@
     </div>
 </template>
 <script>
-export default {};
+import customerService from "../../../services/customerService";
+export default {
+    async mounted() {
+        try {
+            const res = await customerService.list({
+                start: 0,
+                length: 5,
+                keyword: ""
+            });
+            console.log(res);
+        } catch (error) {}
+    }
+};
 </script>
