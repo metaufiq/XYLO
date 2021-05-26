@@ -24,7 +24,9 @@
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Follow Up Customer</a>
+                    <a class="nav-link" href="#" v-on:click="onClickFollowUp"
+                        >Follow Up Customer</a
+                    >
                 </li>
                 <li class="nav-item">
                     <a
@@ -57,6 +59,9 @@ export default {
         },
         onClickContactHistory() {
             this.$router.push("/history");
+        },
+        onClickFollowUp() {
+            this.$router.push("/follow-up");
         }
     }
 };
