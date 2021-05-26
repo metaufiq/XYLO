@@ -1,5 +1,4 @@
-import Login from '../layouts/pages/auth/Login.vue'
-import Register from '../layouts/pages/auth/Register.vue'
+import Auth from '../layouts/pages/auth/Auth.vue'
 
 import Home from '../layouts/pages/home/Home.vue'
 const routes = [
@@ -8,21 +7,14 @@ const routes = [
         name: 'home',
         component: Home,
         meta: {
-            requiresAuth: true,
-        }
-    },
-    {
-        path: '/login',
-        name: 'login',
-        component: Login,
-        meta: {
+            // requiresAuth: true,
             guest: true,
         }
     },
     {
-        path: '/register',
-        name: 'register',
-        component: Register,
+        path: '/welcome',
+        name: 'welcome',
+        component: Auth,
         meta: {
             guest: true,
         }

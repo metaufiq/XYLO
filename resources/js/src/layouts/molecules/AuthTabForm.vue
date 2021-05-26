@@ -33,7 +33,7 @@
                 role="tabpanel"
                 aria-labelledby="agent-tab"
             >
-                <auth-form :type="type" userType="agent"></auth-form>
+                <auth-form userType="agent"></auth-form>
             </div>
             <div
                 class="tab-pane fade"
@@ -41,7 +41,7 @@
                 role="tabpanel"
                 aria-labelledby="admin-tab"
             >
-                <auth-form :type="type" userType="admin"></auth-form>
+                <auth-form userType="admin"></auth-form>
             </div>
         </div>
     </div>
@@ -50,8 +50,6 @@
 <script>
 import AuthForm from "./AuthForm.vue";
 export default {
-    props: ["type"],
-
     components: { AuthForm }
 };
 </script>

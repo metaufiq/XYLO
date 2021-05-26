@@ -11,15 +11,14 @@
                 </div>
             </div>
             <div class="col-md-5">
-                <auth-tab-form :type="type"></auth-tab-form>
+                <auth-tab-form></auth-tab-form>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import AuthForm from "../molecules/AuthForm";
-import AuthTabForm from "../molecules/AuthTabForm.vue";
+import AuthTabForm from "../../molecules/AuthTabForm.vue";
 export default {
     props: ["type"],
     components: { AuthTabForm }
