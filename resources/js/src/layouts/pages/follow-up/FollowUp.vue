@@ -14,11 +14,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>0813123435553</td>
-                            <td></td>
+                        <tr v-for="customer in customerList" :key="customer.id">
+                            <th scope="row">
+                                {{ customerList.indexOf(customer) + 1 }}
+                            </th>
+                            <td>{{ customer.name }}</td>
+                            <td>{{ customer.phone_number }}</td>
+                            <td>{{ customer.status }}</td>
                             <td></td>
                         </tr>
                     </tbody>
@@ -30,6 +32,11 @@
 <script>
 import customerService from "../../../services/customerService";
 export default {
+    data() {
+        return {
+            customerList: []
+        };
+    },
     async mounted() {
         try {
             const res = await customerService.list({
@@ -37,7 +44,7 @@ export default {
                 length: 5,
                 keyword: ""
             });
-            console.log(res);
+            this.customerList = res.data;
         } catch (error) {}
     }
 };
