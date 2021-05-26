@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
         <a class="navbar-brand" href="">XYLO</a>
         <button
             class="navbar-toggler"
@@ -16,7 +16,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Contact Management</a>
+                    <a
+                        class="nav-link"
+                        href="#"
+                        v-on:click="onClickContactManagement"
+                        >Contact Management</a
+                    >
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Follow Up Customer</a>
@@ -41,6 +46,9 @@ export default {
     methods: {
         onLogout() {
             this.$router.push("/welcome");
+        },
+        onClickContactManagement() {
+            this.$router.push("/contact");
         }
     }
 };

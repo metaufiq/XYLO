@@ -1,6 +1,8 @@
 import Auth from '../layouts/pages/auth/Auth.vue'
 
 import Home from '../layouts/pages/home/Home.vue'
+import ContactManagement from '../layouts/pages/contact-management/ContactManagement'
+
 const routes = [
     {
         path: '/',
@@ -19,5 +21,13 @@ const routes = [
             guest: true,
         }
     },
+    {
+        path: '/contact',
+        name: 'contact',
+        component: ContactManagement,
+        meta: {
+            guest: true,
+        }
+    }
 ]
 export default routes
