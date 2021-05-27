@@ -33,7 +33,11 @@
                     >
                         Close
                     </button>
-                    <button type="button" class="btn btn-success">
+                    <button
+                        type="button"
+                        class="btn btn-success"
+                        v-on:click="onSubmit"
+                    >
                         Submit
                     </button>
                 </div>
@@ -52,7 +56,8 @@ export default {
                 .replace(/[^a-zA-Z0-9]+(.)/g, function(match, chr) {
                     return chr.toUpperCase();
                 });
-        }
+        },
+        onSubmit() {}
     }
 };
 </script>
