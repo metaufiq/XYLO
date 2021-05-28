@@ -18,7 +18,6 @@
                         class="close"
                         data-dismiss="modal"
                         aria-label="Close"
-                        v-on:closeModal="this.closeModal"
                     >
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -36,7 +35,6 @@
                         type="button"
                         class="btn btn-danger"
                         data-dismiss="modal"
-                        v-on:closeModal="this.closeModal"
                     >
                         Close
                     </button>
@@ -56,13 +54,7 @@
 <script>
 import customerService from "../../services/customerService";
 export default {
-    props: [
-        "method",
-        "customerName",
-        "customerPhoneNumber",
-        "customerStatus",
-        "closeModal"
-    ],
+    props: ["method", "customerName", "customerPhoneNumber", "customerStatus"],
     methods: {
         camelSentence(str) {
             return (" " + str)

@@ -6,7 +6,6 @@
             :customerName="this.customerName"
             :customerPhoneNumber="this.customerPhoneNumber"
             :customerStatus="this.customerStatus"
-            :closeModal="this.closeModal"
             v-if="this.showModal"
         ></customer-form-modal>
         <div class="container">
@@ -102,10 +101,6 @@ export default {
             this.emptyCustomerData();
             this.method = "add";
             this.showModal = true;
-        },
-        closeModal() {
-            console.log("masuk sini");
-            this.showModal = false;
         },
         emptyCustomerData() {
             this.customerName = "";
