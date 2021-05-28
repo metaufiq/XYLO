@@ -16,9 +16,21 @@ const add = async (customerName, customerPhoneNumber, customerStatus) => {
     return { ...res.data };
 };
 
+const edit = async (customerId, customerName, customerPhoneNumber, customerStatus) => {
+    const params = {
+        id: customerId,
+        name: customerName,
+        phone_number: customerPhoneNumber,
+        status: customerStatus,
+    }
+    const res = await service.Customer.post('edit', params);
+    return { ...res.data };
+};
+
 const customerService = {
     list,
-    add
+    add,
+    edit
 };
 
 export default customerService;

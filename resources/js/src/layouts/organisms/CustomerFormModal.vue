@@ -1,6 +1,7 @@
 <template>
     <div
         class="modal fade"
+        ref="customerFormModal"
         id="customer-form-modal"
         tabindex="-1"
         role="dialog"
@@ -54,7 +55,13 @@
 <script>
 import customerService from "../../services/customerService";
 export default {
-    props: ["method", "customerName", "customerPhoneNumber", "customerStatus"],
+    props: [
+        "method",
+        "customerId",
+        "customerName",
+        "customerPhoneNumber",
+        "customerStatus"
+    ],
     methods: {
         camelSentence(str) {
             return (" " + str)
@@ -77,10 +84,19 @@ export default {
                         newCustomerStatus
                     );
                     break;
+                case "edit":
+                    await customerService.edit(
+                        this.customerId,
+                        newCustomerName,
+                        newCustomerPhoneNumber,
+                        newCustomerStatus
+                    );
+                    break;
 
                 default:
                     break;
             }
+            $(this.$refs.customerFormModal).modal("hide");
         }
     }
 };

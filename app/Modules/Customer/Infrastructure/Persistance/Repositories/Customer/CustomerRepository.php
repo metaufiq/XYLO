@@ -2,9 +2,9 @@
 
 namespace App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer;
 
-use App\Models\Customer;
+use App\Modules\Customer\Application\Resources\CustomerResource;
 use App\Modules\Customer\Application\Services\Customer\CustomerListInputService;
-use App\Modules\Customer\Domain\Models\Customer as ModelsCustomer;
+use App\Modules\Customer\Domain\Models\Customer;;
 
 class CustomerRepository
 {
@@ -15,10 +15,19 @@ class CustomerRepository
     }
     public function add(CustomerAddInputRepository $data)
     {
-        $customer = new ModelsCustomer();
+        $customer = new Customer();
         $customer->name = $data->name;
         $customer->phone_number = $data->phone_number;
         $customer->status = $data->status;
+        return $customer->save();
+    }
+    public function edit(CustomerEditInputRepository $data)
+    {
+        $customer = Customer::find($data->id);
+        $customer->name = $data->name;
+        $customer->phone_number = $data->phone_number;
+        $customer->status = $data->status;
+
         return $customer->save();
     }
 }

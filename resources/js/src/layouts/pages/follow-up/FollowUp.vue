@@ -6,7 +6,7 @@
             :customerName="this.customerName"
             :customerPhoneNumber="this.customerPhoneNumber"
             :customerStatus="this.customerStatus"
-            v-if="this.showModal"
+            :customerId="this.customerId"
         ></customer-form-modal>
         <div class="container">
             <div class="row justify-content-end pt-3">
@@ -81,6 +81,7 @@ export default {
             customerList: [],
             method: "",
             showModal: false,
+            customerId: "",
             customerName: "",
             customerPhoneNumber: "",
             customerStatus: ""
@@ -90,7 +91,7 @@ export default {
         try {
             const res = await customerService.list({
                 start: 0,
-                length: 5,
+                length: 10,
                 keyword: ""
             });
             this.customerList = res.data;
@@ -100,21 +101,18 @@ export default {
         onOpenCustomerAddModal() {
             this.emptyCustomerData();
             this.method = "add";
-            this.showModal = true;
         },
         emptyCustomerData() {
             this.customerName = "";
             this.customerPhoneNumber = "";
             this.customerStatus = "";
-            this.showModal = true;
         },
         onOpenCustomerEditModal(customer) {
+            this.customerId = customer.id;
             this.customerName = customer.name;
             this.customerPhoneNumber = customer.phone_number;
             this.customerStatus = customer.status;
             this.method = "edit";
-
-            this.showModal = true;
         }
     }
 };

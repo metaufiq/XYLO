@@ -5,6 +5,7 @@ namespace App\Modules\Customer\Presentation\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Customer\Application\Services\Customer\CustomerAddInputService;
+use App\Modules\Customer\Application\Services\Customer\CustomerEditInputService;
 use App\Modules\Customer\Application\Services\Customer\CustomerListInputService;
 use App\Modules\Customer\Application\Services\Customer\CustomerService;
 use Illuminate\Http\Request;
@@ -25,5 +26,12 @@ class CustomerController extends Controller
         $service = new CustomerService();
         $input = new CustomerAddInputService($request->input('name'), $request->input('phone_number'), '0');
         return $service->add($input);
+    }
+
+    public function edit(Request $request)
+    {
+        $service = new CustomerService();
+        $input = new CustomerEditInputService($request->input('id'), $request->input('name'), $request->input('phone_number'), '0');
+        return $service->edit($input);
     }
 }

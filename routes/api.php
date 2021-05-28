@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/customer/list', [CustomerController::class, 'list']);
 Route::post('/customer/add', [CustomerController::class, 'add']);
+Route::post('/customer/edit', [CustomerController::class, 'edit']);
