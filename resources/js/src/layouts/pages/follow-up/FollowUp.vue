@@ -59,6 +59,7 @@
                                     <button
                                         type="button"
                                         class="btn btn-danger"
+                                        v-on:click="onDeleteCustomer(customer)"
                                     >
                                         Delete
                                     </button>
@@ -72,6 +73,7 @@
     </div>
 </template>
 <script>
+import service from "../../../config/services";
 import customerService from "../../../services/customerService";
 import CustomerFormModal from "../../organisms/CustomerFormModal.vue";
 export default {
@@ -113,6 +115,9 @@ export default {
             this.customerPhoneNumber = customer.phone_number;
             this.customerStatus = customer.status;
             this.method = "edit";
+        },
+        onDeleteCustomer(customer) {
+            customerService.remove(customer.id);
         }
     }
 };

@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Modules\Customer\Domain\Models;
 
-use App\Models\Customer;
+use App\Modules\Customer\Domain\Models\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CustomerFactory extends Factory

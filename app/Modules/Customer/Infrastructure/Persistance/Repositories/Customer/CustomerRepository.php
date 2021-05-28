@@ -2,8 +2,6 @@
 
 namespace App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer;
 
-use App\Modules\Customer\Application\Resources\CustomerResource;
-use App\Modules\Customer\Application\Services\Customer\CustomerListInputService;
 use App\Modules\Customer\Domain\Models\Customer;;
 
 class CustomerRepository
@@ -29,5 +27,11 @@ class CustomerRepository
         $customer->status = $data->status;
 
         return $customer->save();
+    }
+    public function delete(CustomerDeleteInputRepository $data)
+    {
+        $customer = Customer::find($data->id);
+
+        return $customer->delete();
     }
 }

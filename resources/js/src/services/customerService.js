@@ -27,10 +27,18 @@ const edit = async (customerId, customerName, customerPhoneNumber, customerStatu
     return { ...res.data };
 };
 
+const remove = async (customerId) => {
+    const params = {
+        id: customerId,
+    }
+    const res = await service.Customer.post('delete', params);
+    return { ...res.data };
+};
 const customerService = {
     list,
     add,
-    edit
+    edit,
+    remove
 };
 
 export default customerService;
