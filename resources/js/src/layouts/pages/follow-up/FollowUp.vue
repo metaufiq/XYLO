@@ -1,7 +1,14 @@
 <template>
     <div>
         <navbar></navbar>
-        <customer-form-modal :method="this.method"></customer-form-modal>
+        <customer-form-modal
+            :method="this.method"
+            :customerName="this.customerName"
+            :customerPhoneNumber="this.customerPhoneNumber"
+            :customerStatus="this.customerStatus"
+            :closeModal="this.closeModal"
+            v-if="this.showModal"
+        ></customer-form-modal>
         <div class="container">
             <div class="row justify-content-end pt-3">
                 <button
@@ -73,7 +80,11 @@ export default {
     data() {
         return {
             customerList: [],
-            method: ""
+            method: "",
+            showModal: false,
+            customerName: "",
+            customerPhoneNumber: "",
+            customerStatus: ""
         };
     },
     async mounted() {
@@ -88,10 +99,27 @@ export default {
     },
     methods: {
         onOpenCustomerAddModal() {
+            this.emptyCustomerData();
             this.method = "add";
+            this.showModal = true;
+        },
+        closeModal() {
+            console.log("masuk sini");
+            this.showModal = false;
+        },
+        emptyCustomerData() {
+            this.customerName = "";
+            this.customerPhoneNumber = "";
+            this.customerStatus = "";
+            this.showModal = true;
         },
         onOpenCustomerEditModal(customer) {
+            this.customerName = customer.name;
+            this.customerPhoneNumber = customer.phone_number;
+            this.customerStatus = customer.status;
             this.method = "edit";
+
+            this.showModal = true;
         }
     }
 };

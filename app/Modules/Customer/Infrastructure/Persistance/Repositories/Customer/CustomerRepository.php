@@ -11,7 +11,7 @@ class CustomerRepository
     //
     public function list(CustomerListInputRepository $data)
     {
-        return Customer::all()->where('id', '>=', $data->start)->sortBy('id')->skip($data->start)->take($data->limit);
+        return Customer::all()->where('id', '>=', $data->start)->sortBy('id');
     }
     public function add(CustomerAddInputRepository $data)
     {

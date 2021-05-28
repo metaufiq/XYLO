@@ -18,18 +18,25 @@
                         class="close"
                         data-dismiss="modal"
                         aria-label="Close"
+                        v-on:closeModal="this.closeModal"
                     >
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <customer-form></customer-form>
+                    <customer-form
+                        :customerName="this.customerName"
+                        :customerPhoneNumber="this.customerPhoneNumber"
+                        :customerStatus="this.customerStatus"
+                        ref="customerForm"
+                    ></customer-form>
                 </div>
                 <div class="modal-footer">
                     <button
                         type="button"
                         class="btn btn-danger"
                         data-dismiss="modal"
+                        v-on:closeModal="this.closeModal"
                     >
                         Close
                     </button>
@@ -47,8 +54,15 @@
 </template>
 
 <script>
+import customerService from "../../services/customerService";
 export default {
-    props: ["method"],
+    props: [
+        "method",
+        "customerName",
+        "customerPhoneNumber",
+        "customerStatus",
+        "closeModal"
+    ],
     methods: {
         camelSentence(str) {
             return (" " + str)
@@ -57,7 +71,25 @@ export default {
                     return chr.toUpperCase();
                 });
         },
-        onSubmit() {}
+        async onSubmit() {
+            const {
+                newCustomerName,
+                newCustomerPhoneNumber,
+                newCustomerStatus
+            } = this.$refs.customerForm;
+            switch (this.method) {
+                case "add":
+                    await customerService.add(
+                        newCustomerName,
+                        newCustomerPhoneNumber,
+                        newCustomerStatus
+                    );
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 };
 </script>

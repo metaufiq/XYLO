@@ -22,7 +22,6 @@ class CustomerController extends Controller
 
     public function add(Request $request)
     {
-
         $service = new CustomerService();
         $input = new CustomerAddInputService($request->input('name'), $request->input('phone_number'), '0');
         return $service->add($input);

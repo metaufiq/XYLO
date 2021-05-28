@@ -7,6 +7,7 @@
                 class="form-control"
                 aria-describedby="customer name"
                 placeholder="Name"
+                v-model="newCustomerName"
             />
         </div>
         <div class="form-group">
@@ -16,6 +17,7 @@
                 class="form-control"
                 aria-describedby="customer phone number"
                 placeholder="Phone Number"
+                v-model="newCustomerPhoneNumber"
             />
         </div>
     </div>
@@ -23,6 +25,24 @@
 
 <script>
 export default {
-    props: ["onSubmit"]
+    props: ["customerName", "customerPhoneNumber", "customerStatus"],
+    data() {
+        return {
+            newCustomerName: this.customerName,
+            newCustomerPhoneNumber: this.customerPhoneNumber,
+            newCustomerStatus: this.customerStatus
+        };
+    },
+    watch: {
+        customerName: function(val) {
+            this.newCustomerName = val;
+        },
+        customerPhoneNumber: function(val) {
+            this.newCustomerPhoneNumber = val;
+        },
+        customerStatus: function(val) {
+            this.newCustomerStatus = val;
+        }
+    }
 };
 </script>
