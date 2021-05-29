@@ -7,6 +7,7 @@
             :customerPhoneNumber="this.customerPhoneNumber"
             :customerStatus="this.customerStatus"
             :customerId="this.customerId"
+            :customerAgent="this.customerAgent"
         ></customer-form-modal>
         <div class="container">
             <div class="row justify-content-end pt-3">
@@ -45,7 +46,13 @@
                                     Email: {{ customer.email }}
                                 </td>
                                 <td>{{ customer.status }}</td>
-                                <td>{{ customer.follow_up_by }}</td>
+                                <td>
+                                    {{
+                                        customer.agent
+                                            ? customer.agent.email
+                                            : ""
+                                    }}
+                                </td>
                                 <td>
                                     <button
                                         type="button"
@@ -86,7 +93,8 @@ export default {
             customerId: "",
             customerName: "",
             customerPhoneNumber: "",
-            customerStatus: ""
+            customerStatus: "",
+            customerAgent: ""
         };
     },
     async mounted() {
@@ -114,6 +122,7 @@ export default {
             this.customerName = customer.name;
             this.customerPhoneNumber = customer.phone_number;
             this.customerStatus = customer.status;
+            this.customerAgent = customer.agent ?? "";
             this.method = "edit";
         },
         onDeleteCustomer(customer) {

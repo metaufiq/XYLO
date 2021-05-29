@@ -17,7 +17,7 @@ class CustomerRepository
         $customer->name = $data->name;
         $customer->phone_number = $data->phone_number;
         $customer->email = $data->email;
-        $customer->follow_up_by = $data->follow_up_by;
+        $customer->agent_id = $data->agent_id;
         $customer->status = $data->status;
 
         return $customer->save();
@@ -29,7 +29,7 @@ class CustomerRepository
         $customer->phone_number = $data->phone_number;
         $customer->email = $data->email;
         $customer->status = $data->status;
-        $customer->follow_up_by = $data->follow_up_by;
+        $customer->agent_id = $data->agent_id;
 
         return $customer->save();
     }

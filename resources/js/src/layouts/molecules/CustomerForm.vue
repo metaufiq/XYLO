@@ -22,9 +22,9 @@
         </div>
         <div class="form-group">
             <label>Assign To Agent:</label>
-            <select class="custom-select" v-model="newCustomerAgent">
+            <select class="custom-select" v-model="newCustomerAgentId">
                 <option
-                    v-for="agent in agentList"
+                    v-for="agent in this.$store.state.agentList"
                     v-bind:key="agent.id"
                     v-bind:value="agent.id"
                     >{{ agent.email }}</option
@@ -35,16 +35,20 @@
 </template>
 
 <script>
-import agentService from "../../services/agentService";
 export default {
-    props: ["customerName", "customerPhoneNumber", "customerStatus"],
+    props: [
+        "customerName",
+        "customerPhoneNumber",
+        "customerStatus",
+        "customerAgent"
+    ],
     data() {
         return {
-            agentList: "",
+            agentList: [],
             newCustomerName: this.customerName,
             newCustomerPhoneNumber: this.customerPhoneNumber,
             newCustomerStatus: this.customerStatus,
-            newCustomerAgent: ""
+            newCustomerAgentId: this.customerAgent.id
         };
     },
     watch: {
@@ -56,16 +60,13 @@ export default {
         },
         customerStatus: function(val) {
             this.newCustomerStatus = val;
+        },
+        customerAgent: function(val) {
+            this.newCustomerAgentId = val.id;
         }
     },
     async mounted() {
-        const params = {
-            start: 0,
-            length: 10,
-            keyword: ""
-        };
-        const res = await agentService.list(params);
-        this.agentList = res.data;
+        this.$store.dispatch("getAgentList");
     }
 };
 </script>

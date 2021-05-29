@@ -28,6 +28,7 @@
                         :customerName="this.customerName"
                         :customerPhoneNumber="this.customerPhoneNumber"
                         :customerStatus="this.customerStatus"
+                        :customerAgent="this.customerAgent"
                         ref="customerForm"
                     ></customer-form>
                 </div>
@@ -60,6 +61,7 @@ export default {
         "customerId",
         "customerName",
         "customerPhoneNumber",
+        "customerAgent",
         "customerStatus"
     ],
     methods: {
@@ -75,24 +77,28 @@ export default {
                 newCustomerName,
                 newCustomerPhoneNumber,
                 newCustomerStatus,
-                newCustomerAgent
+                newCustomerAgentId
             } = this.$refs.customerForm;
+            let params = {};
             switch (this.method) {
                 case "add":
-                    const input = {
+                    params = {
                         name: newCustomerName,
                         phone_number: newCustomerPhoneNumber,
+                        agent_id: newCustomerAgent,
                         status: newCustomerStatus
                     };
-                    this.$store.dispatch("addCustomer", input);
+                    this.$store.dispatch("addCustomer", params);
                     break;
                 case "edit":
-                    await customerService.edit(
-                        this.customerId,
-                        newCustomerName,
-                        newCustomerPhoneNumber,
-                        newCustomerStatus
-                    );
+                    params = {
+                        id: this.customerId,
+                        name: newCustomerName,
+                        phone_number: newCustomerPhoneNumber,
+                        agent_id: newCustomerAgentId,
+                        status: newCustomerStatus
+                    };
+                    this.$store.dispatch("editCustomer", params);
                     break;
 
                 default:
