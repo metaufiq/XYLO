@@ -26,7 +26,6 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Status</th>
@@ -40,9 +39,6 @@
                                     .customerList"
                                 :key="customer.id"
                             >
-                                <th scope="row">
-                                    {{ customerList.indexOf(customer) + 1 }}
-                                </th>
                                 <td>{{ customer.name }}</td>
                                 <td>
                                     Phone: {{ customer.phone_number }}<br />
