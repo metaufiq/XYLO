@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Modules\Auth\Domain\Models\User;
 use App\Modules\Customer\Domain\Models\Customer;
 use Illuminate\Database\Seeder;
 
@@ -16,5 +17,6 @@ class DatabaseSeeder extends Seeder
     {
         Customer::factory(10)
             ->create();
+        User::factory(10)->create();
     }
 }
