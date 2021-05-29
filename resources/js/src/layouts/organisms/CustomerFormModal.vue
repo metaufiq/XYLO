@@ -85,7 +85,7 @@ export default {
                     params = {
                         name: newCustomerName,
                         phone_number: newCustomerPhoneNumber,
-                        agent_id: newCustomerAgent,
+                        agent_id: newCustomerAgentId,
                         status: newCustomerStatus
                     };
                     this.$store.dispatch("addCustomer", params);
