@@ -15,25 +15,17 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                <li
+                    class="nav-item"
+                    v-for="route in routes"
+                    v-bind:key="route.path"
+                >
                     <a
                         class="nav-link"
                         href="#"
-                        v-on:click="onClickContactManagement"
-                        >Contact Management</a
-                    >
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" v-on:click="onClickFollowUp"
-                        >Follow Up Customer</a
-                    >
-                </li>
-                <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        href="#"
-                        v-on:click="onClickContactHistory"
-                        >History</a
+                        v-on:click="onNext(route)"
+                        v-if="route.path != '/' && route.path != '/welcome'"
+                        >{{ route.meta.navBarTitle }}</a
                     >
                 </li>
             </ul>
@@ -49,19 +41,19 @@
 </template>
 
 <script>
+import routes from "../../routes";
 export default {
+    data() {
+        return {
+            routes: routes
+        };
+    },
     methods: {
         onLogout() {
             this.$router.push("/welcome");
         },
-        onClickContactManagement() {
-            this.$router.push("/contact");
-        },
-        onClickContactHistory() {
-            this.$router.push("/history");
-        },
-        onClickFollowUp() {
-            this.$router.push("/follow-up");
+        onNext(route) {
+            this.$router.push(route.path);
         }
     }
 };

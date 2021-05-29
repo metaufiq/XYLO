@@ -73,7 +73,6 @@
     </div>
 </template>
 <script>
-import service from "../../../config/services";
 import customerService from "../../../services/customerService";
 import CustomerFormModal from "../../organisms/CustomerFormModal.vue";
 export default {

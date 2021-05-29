@@ -30,14 +30,7 @@ const routes = [
         component: ContactManagement,
         meta: {
             guest: true,
-        }
-    },
-    {
-        path: '/history',
-        name: 'history',
-        component: ContactHistory,
-        meta: {
-            guest: true,
+            navBarTitle: 'Contact Management'
         }
     },
     {
@@ -46,6 +39,16 @@ const routes = [
         component: FollowUp,
         meta: {
             guest: true,
+            navBarTitle: 'Follow Up Customer'
+        }
+    },
+    {
+        path: '/history',
+        name: 'history',
+        component: ContactHistory,
+        meta: {
+            guest: true,
+            navBarTitle: 'Contact History'
         }
     },
 ]
