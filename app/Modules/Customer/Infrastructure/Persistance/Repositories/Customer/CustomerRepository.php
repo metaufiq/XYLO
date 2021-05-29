@@ -16,8 +16,10 @@ class CustomerRepository
         $customer = new Customer();
         $customer->name = $data->name;
         $customer->phone_number = $data->phone_number;
-        $customer->status = $data->status;
+        $customer->email = $data->email;
         $customer->follow_up_by = $data->follow_up_by;
+        $customer->status = $data->status;
+
         return $customer->save();
     }
     public function edit(CustomerEditInputRepository $data)
@@ -25,6 +27,7 @@ class CustomerRepository
         $customer = Customer::find($data->id);
         $customer->name = $data->name;
         $customer->phone_number = $data->phone_number;
+        $customer->email = $data->email;
         $customer->status = $data->status;
         $customer->follow_up_by = $data->follow_up_by;
 

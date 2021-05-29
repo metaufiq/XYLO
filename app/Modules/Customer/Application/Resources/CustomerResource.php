@@ -19,6 +19,7 @@ class CustomerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'phone_number' => $this->phone_number,
+            'email' => $this->email,
             'follow_up_by' => User::find($this->follow_up_by)?->email,
             'status' => $this->status,
         ];

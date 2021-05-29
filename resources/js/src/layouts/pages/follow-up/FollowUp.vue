@@ -42,7 +42,7 @@
                                 <td>{{ customer.name }}</td>
                                 <td>
                                     Phone: {{ customer.phone_number }}<br />
-                                    Email: tuafiq@gamdsa.com
+                                    Email: {{ customer.email }}
                                 </td>
                                 <td>{{ customer.status }}</td>
                                 <td>{{ customer.follow_up_by }}</td>
