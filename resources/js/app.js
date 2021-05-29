@@ -6,6 +6,7 @@
 
 const { default: router } = require('./src/config/router');
 import Application from './App.vue'
+import store from './src/store'
 require('./bootstrap');
 
 window.Vue = require('vue').default;
@@ -32,5 +33,6 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 const app = new Vue({
     el: '#app',
     router,
+    store,
     render: h => h(Application)
 });

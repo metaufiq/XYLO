@@ -35,7 +35,8 @@
                         </thead>
                         <tbody>
                             <tr
-                                v-for="customer in customerList"
+                                v-for="customer in this.$store.state
+                                    .customerList"
                                 :key="customer.id"
                             >
                                 <th scope="row">
@@ -79,7 +80,7 @@ export default {
     components: { CustomerFormModal },
     data() {
         return {
-            customerList: [],
+            customerList: this.$store.state.customerList,
             method: "",
             showModal: false,
             customerId: "",
@@ -90,12 +91,12 @@ export default {
     },
     async mounted() {
         try {
-            const res = await customerService.list({
+            const params = {
                 start: 0,
                 length: 10,
                 keyword: ""
-            });
-            this.customerList = res.data;
+            };
+            this.$store.dispatch("getCustomerList", params);
         } catch (error) {}
     },
     methods: {
@@ -116,7 +117,7 @@ export default {
             this.method = "edit";
         },
         onDeleteCustomer(customer) {
-            customerService.remove(customer.id);
+            this.$store.dispatch("deleteCustomer", customer.id);
         }
     }
 };

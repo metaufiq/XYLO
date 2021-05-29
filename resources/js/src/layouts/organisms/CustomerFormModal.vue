@@ -78,11 +78,12 @@ export default {
             } = this.$refs.customerForm;
             switch (this.method) {
                 case "add":
-                    await customerService.add(
-                        newCustomerName,
-                        newCustomerPhoneNumber,
-                        newCustomerStatus
-                    );
+                    const input = {
+                        name: newCustomerName,
+                        phone_number: newCustomerPhoneNumber,
+                        status: newCustomerStatus
+                    };
+                    this.$store.dispatch("addCustomer", input);
                     break;
                 case "edit":
                     await customerService.edit(

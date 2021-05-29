@@ -6,12 +6,7 @@ const list = async (params) => {
     return { ...res.data };
 };
 
-const add = async (customerName, customerPhoneNumber, customerStatus) => {
-    const params = {
-        name: customerName,
-        phone_number: customerPhoneNumber,
-        status: customerStatus
-    }
+const add = async (params) => {
     const res = await service.Customer.post('add', params);
     return { ...res.data };
 };
