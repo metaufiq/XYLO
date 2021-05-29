@@ -28,8 +28,9 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Phone</th>
+                                <th scope="col">Contact</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Follow Up By</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -43,8 +44,12 @@
                                     {{ customerList.indexOf(customer) + 1 }}
                                 </th>
                                 <td>{{ customer.name }}</td>
-                                <td>{{ customer.phone_number }}</td>
+                                <td>
+                                    Phone: {{ customer.phone_number }}<br />
+                                    Email: tuafiq@gamdsa.com
+                                </td>
                                 <td>{{ customer.status }}</td>
+                                <td>tuafiq@gamdsa.com</td>
                                 <td>
                                     <button
                                         type="button"
