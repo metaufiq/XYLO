@@ -2,10 +2,13 @@ import requestConfig from './api/request';
 import responseConfig from './api/response';
 import Customer from './services/Customer';
 import Auth from './services/Auth';
+import Agent from './services/Agent';
+
 
 const service = {
   Customer,
-  Auth
+  Auth,
+  Agent
 };
 
 

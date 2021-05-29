@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Agent\Presentation\Controllers\AgentController;
 use App\Modules\Auth\Presentation\Controllers\AuthController;
 use App\Modules\Customer\Presentation\Controllers\CustomerController;
 use Illuminate\Http\Request;
@@ -25,6 +26,9 @@ Route::prefix('customer')->group(function () {
     Route::post('/add', [CustomerController::class, 'add']);
     Route::post('/edit', [CustomerController::class, 'edit']);
     Route::post('/delete', [CustomerController::class, 'delete']);
+});
+Route::prefix('agent')->group(function () {
+    Route::get('/list', [AgentController::class, 'list']);
 });
 
 Route::prefix('auth')->group(function () {

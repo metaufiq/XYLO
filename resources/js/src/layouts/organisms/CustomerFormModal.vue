@@ -74,7 +74,8 @@ export default {
             const {
                 newCustomerName,
                 newCustomerPhoneNumber,
-                newCustomerStatus
+                newCustomerStatus,
+                newCustomerAgent
             } = this.$refs.customerForm;
             switch (this.method) {
                 case "add":

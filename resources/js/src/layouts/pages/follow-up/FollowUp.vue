@@ -74,7 +74,6 @@
     </div>
 </template>
 <script>
-import customerService from "../../../services/customerService";
 import CustomerFormModal from "../../organisms/CustomerFormModal.vue";
 export default {
     components: { CustomerFormModal },
