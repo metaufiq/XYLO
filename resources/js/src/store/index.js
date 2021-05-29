@@ -19,11 +19,11 @@ const store = new Vuex.Store({
         editCustomer(state, customer) {
             let temp = state.customerList.map(x => {
                 if (x.id === customer.id) {
-                    x.agent = [...state.agentList].filter(agent => agent.id === customer.agent_id);
+                    const tempAgentList = [...state.agentList].filter(agent => agent.id === customer.agent_id)
+                    x.agent = tempAgentList.length > 0 ? tempAgentList[0] : x.agent;
                 }
                 return x;
             });
-            console.log({ ...state.agentList.forEach });
             state.customerList = temp;
         },
         setCustomerList(state, customerList) {
