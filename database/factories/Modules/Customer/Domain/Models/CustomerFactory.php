@@ -24,6 +24,8 @@ class CustomerFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'phone_number' => $this->faker->phoneNumber(), // password
+            'email' => $this->faker->email(),
+            'follow_up_by' => $this->faker->randomElement([1, 5, 7, null]),
             'status' => '0'
         ];
     }

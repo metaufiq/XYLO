@@ -17,6 +17,8 @@ class CreateCustomersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone_number');
+            $table->string('email');
+            $table->foreignId('follow_up_by')->nullable()->constrained('users');
             $table->string('status');
             $table->softDeletes();
             $table->timestamps();
