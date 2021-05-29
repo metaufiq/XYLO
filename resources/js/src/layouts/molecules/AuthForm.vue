@@ -9,6 +9,7 @@
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
+                    v-model="email"
                 />
                 <small id="emailHelp" class="form-text text-muted"
                     >We'll never share your email with anyone else.</small
@@ -21,6 +22,7 @@
                     class="form-control"
                     id="exampleInputPassword1"
                     placeholder="Password"
+                    v-model="password"
                 />
             </div>
             <div class="form-group container">
@@ -46,13 +48,27 @@
 </template>
 
 <script>
+import authService from "../../services/authService";
+
 export default {
     props: ["userType"],
+    data() {
+        return {
+            email: "",
+            password: ""
+        };
+    },
     methods: {
-        onLogin() {
+        async onLogin() {
+            const data = {
+                email: this.email,
+                password: this.password
+            };
+            const res = await authService.login(data);
+            localStorage.setItem("user", JSON.stringify(res.data));
             this.$router.push("/");
         },
-        onRegister() {
+        async onRegister() {
             this.$router.push("/");
         }
     }

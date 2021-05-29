@@ -1,5 +1,6 @@
 <?php
 
+use App\Modules\Auth\Presentation\Controllers\AuthController;
 use App\Modules\Customer\Presentation\Controllers\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/customer/list', [CustomerController::class, 'list']);
-Route::post('/customer/add', [CustomerController::class, 'add']);
-Route::post('/customer/edit', [CustomerController::class, 'edit']);
-Route::post('/customer/delete', [CustomerController::class, 'delete']);
+Route::prefix('customer')->group(function () {
+    Route::get('/list', [CustomerController::class, 'list']);
+    Route::post('/add', [CustomerController::class, 'add']);
+    Route::post('/edit', [CustomerController::class, 'edit']);
+    Route::post('/delete', [CustomerController::class, 'delete']);
+});
+
+Route::prefix('auth')->group(function () {
+    Route::post('/login', [AuthController::class, 'login']);
+});

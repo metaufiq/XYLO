@@ -3,7 +3,6 @@ const setToken = async (config) => {
   switch (config.method) {
     case 'get':
       // config.params.request_key = userData.request_key;
-      console.log(config.baseURL);
       break;
 
     default:

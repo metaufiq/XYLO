@@ -1,9 +1,11 @@
 import requestConfig from './api/request';
 import responseConfig from './api/response';
 import Customer from './services/Customer';
+import Auth from './services/Auth';
 
 const service = {
-  Customer
+  Customer,
+  Auth
 };
 
 
