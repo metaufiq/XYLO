@@ -17,6 +17,7 @@ class CustomerRepository
         $customer->name = $data->name;
         $customer->phone_number = $data->phone_number;
         $customer->status = $data->status;
+        $customer->follow_up_by = $data->follow_up_by;
         return $customer->save();
     }
     public function edit(CustomerEditInputRepository $data)
@@ -25,6 +26,7 @@ class CustomerRepository
         $customer->name = $data->name;
         $customer->phone_number = $data->phone_number;
         $customer->status = $data->status;
+        $customer->follow_up_by = $data->follow_up_by;
 
         return $customer->save();
     }

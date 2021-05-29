@@ -49,7 +49,7 @@
                                     Email: tuafiq@gamdsa.com
                                 </td>
                                 <td>{{ customer.status }}</td>
-                                <td>tuafiq@gamdsa.com</td>
+                                <td>{{ customer.follow_up_by }}</td>
                                 <td>
                                     <button
                                         type="button"

@@ -21,13 +21,13 @@ class CustomerService
     public function add(CustomerAddInputService $data)
     {
         $repository = new CustomerRepository();
-        $input = new CustomerAddInputRepository($data->name, $data->phone_number, $data->status);
+        $input = new CustomerAddInputRepository($data->name, $data->phone_number, $data->follow_up_by, $data->status);
         return $repository->add($input);
     }
     public function edit(CustomerEditInputService $data)
     {
         $repository = new CustomerRepository();
-        $input = new CustomerEditInputRepository($data->id, $data->name, $data->phone_number, $data->status);
+        $input = new CustomerEditInputRepository($data->id, $data->name, $data->phone_number, $data->follow_up_by, $data->status);
         return $repository->edit($input);
     }
 

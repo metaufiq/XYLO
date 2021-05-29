@@ -2,8 +2,7 @@
 
 namespace App\Modules\Customer\Application\Resources;
 
-
-
+use App\Modules\Auth\Domain\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CustomerResource extends JsonResource
@@ -20,6 +19,7 @@ class CustomerResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'phone_number' => $this->phone_number,
+            'follow_up_by' => User::find($this->follow_up_by)?->email,
             'status' => $this->status,
         ];
     }
