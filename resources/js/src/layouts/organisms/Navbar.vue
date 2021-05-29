@@ -24,6 +24,10 @@
                         class="nav-link"
                         href="#"
                         v-on:click="onNext(route)"
+                        v-bind:class="{
+                            active: isCurrentPath(route),
+                            disabled: isCurrentPath(route)
+                        }"
                         v-if="route.path != '/' && route.path != '/welcome'"
                         >{{ route.meta.navBarTitle }}</a
                     >
@@ -54,6 +58,9 @@ export default {
         },
         onNext(route) {
             this.$router.push(route.path);
+        },
+        isCurrentPath(route) {
+            return this.$route.path === route.path;
         }
     }
 };
