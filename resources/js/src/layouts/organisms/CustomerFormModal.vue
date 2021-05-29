@@ -104,6 +104,12 @@ export default {
                 default:
                     break;
             }
+            params = {
+                start: 0,
+                length: 10,
+                keyword: ""
+            };
+            this.$store.dispatch("getCustomerList", params);
             $(this.$refs.customerFormModal).modal("hide");
         }
     }
