@@ -1,10 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import customerService from '../services/customerService';
+import agentService from '../services/agentService';
+
 Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
-        customerList: []
+        customerList: [],
+        agentList: []
     },
     mutations: {
         addCustomer(state, customer) {
@@ -13,8 +16,21 @@ const store = new Vuex.Store({
         deleteCustomer(state, customerId) {
             state.customerList = [...state.customerList].filter((customer) => customer.id != customerId);
         },
+        editCustomer(state, customer) {
+            let temp = state.customerList.map(x => {
+                if (x.id === customer.id) {
+                    x.agent = [...state.agentList].filter(agent => agent.id === customer.agent_id);
+                }
+                return x;
+            });
+            console.log({ ...state.agentList.forEach });
+            state.customerList = temp;
+        },
         setCustomerList(state, customerList) {
             state.customerList = customerList
+        },
+        setAgentList(state, agentList) {
+            state.agentList = agentList
         }
     },
     actions: {
@@ -23,6 +39,10 @@ const store = new Vuex.Store({
             customer.status = '0'
             context.commit('addCustomer', customer)
         },
+        async editCustomer(context, customer) {
+            await customerService.edit(customer);
+            context.commit('editCustomer', customer)
+        },
         async deleteCustomer(context, customerId) {
             await customerService.remove(customerId);
             context.commit('deleteCustomer', customerId);
@@ -30,6 +50,16 @@ const store = new Vuex.Store({
         async getCustomerList(context, params) {
             const res = await customerService.list(params);
             context.commit('setCustomerList', res.data)
+        },
+
+        async getAgentList(context) {
+            const params = {
+                start: 0,
+                length: 10,
+                keyword: ""
+            };
+            const res = await agentService.list(params);
+            context.commit('setAgentList', res.data)
         }
     }
 })
