@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Modules\Customer\Application\Resources\Customer;
+namespace App\Modules\History\Application\Resources\FollowUpHistory;
+
 
 use App\Modules\Auth\Domain\Models\User;
 use App\Modules\Customer\Domain\Models\Customer;
@@ -22,6 +23,7 @@ class FollowUpHistoryResource extends JsonResource
             'customer' => Customer::find($this->customer_id),
             'status' => FollowUpStatus::find($this->status_id),
             'agent' => User::find($this->agent_id),
+            'updated_at' => $this->updated_at
         ];
     }
 }

@@ -2,9 +2,7 @@
 
 namespace App\Modules\History\Application\Resources\FollowUpHistory;
 
-
-
-
+use App\Modules\Customer\Application\Resources\Customer\FollowUpHistoryResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class FollowUpHistoryCollection extends ResourceCollection

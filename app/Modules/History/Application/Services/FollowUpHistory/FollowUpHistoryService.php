@@ -9,6 +9,7 @@ use App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer\Custom
 use App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer\CustomerEditInputRepository;
 use App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer\CustomerListInputRepository;
 use App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer\CustomerRepository;
+use App\Modules\History\Application\Resources\FollowUpHistory\FollowUpHistoryCollection;
 use App\Modules\History\Infrastructure\Persistance\Repositories\FollowUpHistory\FollowUpHistoryAddInputRepository;
 use App\Modules\History\Infrastructure\Persistance\Repositories\FollowUpHistory\FollowUpHistoryListInputRepository;
 use App\Modules\History\Infrastructure\Persistance\Repositories\FollowUpHistory\FollowUpHistoryRepository;
@@ -19,7 +20,7 @@ class FollowUpHistoryService
     {
         $repository = new FollowUpHistoryRepository();
         $input = new FollowUpHistoryListInputRepository($data->user);
-        return new CustomerCollection($repository->list($input));
+        return new FollowUpHistoryCollection($repository->list($input));
     }
 
     public function add(FollowUpHistoryAddInputService $data)

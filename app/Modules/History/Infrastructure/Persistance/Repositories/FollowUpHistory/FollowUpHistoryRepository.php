@@ -3,7 +3,6 @@
 namespace App\Modules\History\Infrastructure\Persistance\Repositories\FollowUpHistory;
 
 
-use App\Modules\Customer\Domain\Models\Customer;
 use App\Modules\History\Domain\Models\FollowUpHistory;;
 
 class FollowUpHistoryRepository

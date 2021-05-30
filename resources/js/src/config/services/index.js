@@ -3,12 +3,13 @@ import responseConfig from './api/response';
 import Customer from './services/Customer';
 import Auth from './services/Auth';
 import Agent from './services/Agent';
-
+import History from './services/History';
 
 const service = {
   Customer,
   Auth,
-  Agent
+  Agent,
+  History
 };
 
 
