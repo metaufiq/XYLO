@@ -9,7 +9,11 @@ class CustomerRepository
     //
     public function list(CustomerListInputRepository $data)
     {
-        return Customer::all()->where('id', '>=', $data->start)->sortBy('id');
+        $query = Customer::all();
+        if ($data->user->role === 'agent') {
+            $query = $query->where('agent_id', '=', $data->user->id);
+        }
+        return $query->sortBy('updated_at');
     }
     public function add(CustomerAddInputRepository $data)
     {

@@ -36,7 +36,12 @@ const store = new Vuex.Store({
         async deleteCustomer(context, customerId) {
             await customerService.remove(customerId);
         },
-        async getCustomerList(context, params) {
+        async getCustomerList(context) {
+            const params = {
+                user_id: JSON.parse(localStorage.getItem('userData')).id,
+                user_role: JSON.parse(localStorage.getItem('userData')).role,
+            }
+
             const res = await customerService.list(params);
             context.commit('setCustomerList', res.data)
         },

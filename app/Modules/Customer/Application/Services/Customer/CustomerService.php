@@ -14,7 +14,7 @@ class CustomerService
     public function list(CustomerListInputService $data)
     {
         $repository = new CustomerRepository();
-        $input = new CustomerListInputRepository($data->start, $data->limit, $data->keyword);
+        $input = new CustomerListInputRepository($data->user);
         return new CustomerCollection($repository->list($input));
     }
 

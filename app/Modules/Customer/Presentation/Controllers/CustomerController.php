@@ -18,7 +18,11 @@ class CustomerController extends Controller
     {
 
         $service = new CustomerService();
-        $input = new CustomerListInputService($request->input('start'), $request->input('limit'), $request->input('keyword'));
+        $userMapper = (object) [
+            'id' => $request->input('user_id'),
+            'role' => $request->input('user_role'),
+        ];
+        $input = new CustomerListInputService($userMapper);
         return $service->list($input);
     }
 

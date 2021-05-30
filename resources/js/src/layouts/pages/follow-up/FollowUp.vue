@@ -116,12 +116,7 @@ export default {
     },
     async mounted() {
         try {
-            const params = {
-                start: 0,
-                length: 10,
-                keyword: ""
-            };
-            this.$store.dispatch("getCustomerList", params);
+            this.$store.dispatch("getCustomerList");
         } catch (error) {}
     },
     methods: {

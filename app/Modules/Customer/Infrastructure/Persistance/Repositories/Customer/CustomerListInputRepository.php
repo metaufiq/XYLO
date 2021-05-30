@@ -5,14 +5,10 @@ namespace App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer;
 
 class CustomerListInputRepository
 {
-    public $start;
-    public $limit;
-    public $keyword;
+    public $user;
 
-    public function __construct($start, $limit, $keyword)
+    public function __construct($user)
     {
-        $this->start = $start;
-        $this->limit = $limit;
-        $this->keyword = $keyword;
+        $this->user = $user;
     }
 }
