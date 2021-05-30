@@ -31,7 +31,15 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Follow Up By</th>
+                                <th
+                                    scope="col"
+                                    v-if="
+                                        this.$store.state.userData.role ===
+                                            'admin'
+                                    "
+                                >
+                                    Follow Up By
+                                </th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -47,7 +55,11 @@
                                     Email: {{ customer.email }}
                                 </td>
                                 <td>{{ customer.status.status }}</td>
-                                <td>
+                                <td
+                                    v-if="
+                                        $store.state.userData.role === 'admin'
+                                    "
+                                >
                                     {{
                                         customer.agent
                                             ? customer.agent.email
