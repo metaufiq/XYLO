@@ -18,7 +18,7 @@ class CustomerRepository
         $customer->phone_number = $data->phone_number;
         $customer->email = $data->email;
         $customer->agent_id = $data->agent_id;
-        $customer->status = $data->status;
+        $customer->status_id = $data->status_id;
 
         return $customer->save();
     }
@@ -28,7 +28,7 @@ class CustomerRepository
         $customer->name = $data->name;
         $customer->phone_number = $data->phone_number;
         $customer->email = $data->email;
-        $customer->status = $data->status;
+        $customer->status_id = $data->status_id;
         $customer->agent_id = $data->agent_id;
 
         return $customer->save();

@@ -6,6 +6,12 @@ const list = async (params) => {
     return { ...res.data };
 };
 
+
+const listStatus = async (params) => {
+    const res = await service.Customer.get('status/list', { params });
+    return { ...res.data };
+};
+
 const add = async (params) => {
     const res = await service.Customer.post('add', params);
     return { ...res.data };
@@ -25,6 +31,7 @@ const remove = async (customerId) => {
 };
 const customerService = {
     list,
+    listStatus,
     add,
     edit,
     remove

@@ -2,7 +2,7 @@
 
 namespace App\Modules\Customer\Application\Services\Customer;
 
-use App\Modules\Customer\Application\Resources\CustomerCollection;
+use App\Modules\Customer\Application\Resources\Customer\CustomerCollection;
 use App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer\CustomerAddInputRepository;
 use App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer\CustomerDeleteInputRepository;
 use App\Modules\Customer\Infrastructure\Persistance\Repositories\Customer\CustomerEditInputRepository;
@@ -21,13 +21,13 @@ class CustomerService
     public function add(CustomerAddInputService $data)
     {
         $repository = new CustomerRepository();
-        $input = new CustomerAddInputRepository($data->name,  $data->phone_number, $data->email, $data->agent_id, $data->status);
+        $input = new CustomerAddInputRepository($data->name,  $data->phone_number, $data->email, $data->agent_id, $data->status_id);
         return $repository->add($input);
     }
     public function edit(CustomerEditInputService $data)
     {
         $repository = new CustomerRepository();
-        $input = new CustomerEditInputRepository($data->id, $data->name, $data->phone_number, $data->email, $data->agent_id, $data->status);
+        $input = new CustomerEditInputRepository($data->id, $data->name, $data->phone_number, $data->email, $data->agent_id, $data->status_id);
         return $repository->edit($input);
     }
 

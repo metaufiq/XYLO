@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Customer\Application\Resources;
+namespace App\Modules\Customer\Application\Resources\Customer;
 
 use App\Modules\Auth\Domain\Models\User;
 use App\Modules\Customer\Domain\Models\FollowUpStatus;

@@ -86,7 +86,7 @@ export default {
                         name: newCustomerName,
                         phone_number: newCustomerPhoneNumber,
                         agent_id: newCustomerAgentId,
-                        status: newCustomerStatus
+                        status_id: newCustomerStatus
                     };
                     this.$store.dispatch("addCustomer", params);
                     break;
@@ -96,7 +96,7 @@ export default {
                         name: newCustomerName,
                         phone_number: newCustomerPhoneNumber,
                         agent_id: newCustomerAgentId,
-                        status: newCustomerStatus
+                        status_id: newCustomerStatus
                     };
                     this.$store.dispatch("editCustomer", params);
                     break;

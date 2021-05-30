@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Modules\Customer\Application\Resources;
+namespace App\Modules\Customer\Application\Resources\Customer;
+
 
 
 

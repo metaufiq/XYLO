@@ -31,10 +31,22 @@
                 >
             </select>
         </div>
+        <div class="form-group">
+            <label>Status Follow Up:</label>
+            <select class="custom-select" v-model="newCustomerStatus">
+                <option
+                    v-for="status in customerStatusList"
+                    v-bind:key="status.id"
+                    v-bind:value="status.id"
+                    >{{ status.status }}</option
+                >
+            </select>
+        </div>
     </div>
 </template>
 
 <script>
+import customerService from "../../services/customerService";
 export default {
     props: [
         "customerName",
@@ -48,7 +60,8 @@ export default {
             newCustomerName: this.customerName,
             newCustomerPhoneNumber: this.customerPhoneNumber,
             newCustomerStatus: this.customerStatus,
-            newCustomerAgentId: this.customerAgent.id
+            newCustomerAgentId: this.customerAgent.id,
+            customerStatusList: []
         };
     },
     watch: {
@@ -67,6 +80,13 @@ export default {
     },
     async mounted() {
         this.$store.dispatch("getAgentList");
+        const params = {
+            start: 0,
+            length: 10,
+            keyword: ""
+        };
+        const res = await customerService.listStatus(params);
+        this.customerStatusList = res.data;
     }
 };
 </script>
