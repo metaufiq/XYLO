@@ -34,5 +34,11 @@ const app = new Vue({
     el: '#app',
     router,
     store,
+    created() {
+        const userData = localStorage.getItem('userData')
+        if (userData) {
+            this.$store.commit('setUserData', JSON.parse(userData))
+        }
+    },
     render: h => h(Application)
 });

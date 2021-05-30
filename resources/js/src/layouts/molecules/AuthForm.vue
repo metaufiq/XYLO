@@ -65,7 +65,7 @@ export default {
                 password: this.password
             };
             const res = await authService.login(data);
-            localStorage.setItem("user", JSON.stringify(res.data));
+            this.$store.commit("setUserData", res.data);
             this.$router.push("/");
         },
         async onRegister() {

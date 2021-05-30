@@ -28,7 +28,7 @@
                             active: isCurrentPath(route),
                             disabled: isCurrentPath(route)
                         }"
-                        v-if="route.path != '/' && route.path != '/welcome'"
+                        v-if="isRouteAllowed(route)"
                         >{{ route.meta.navBarTitle }}</a
                     >
                 </li>
@@ -49,9 +49,12 @@ import routes from "../../routes";
 export default {
     data() {
         return {
-            routes: routes
+            routes: routes,
+            disabledPathAdmin: ["/", "/welcome", "/history"],
+            disabledPathAgent: ["/", "/welcome"]
         };
     },
+    mounted() {},
     methods: {
         onLogout() {
             this.$router.push("/welcome");
@@ -61,6 +64,13 @@ export default {
         },
         isCurrentPath(route) {
             return this.$route.path === route.path;
+        },
+        isRouteAllowed(route) {
+            let disabledPath =
+                this.$store.state.userData.role === "admin"
+                    ? this.disabledPathAdmin
+                    : this.disabledPathAgent;
+            return !disabledPath.includes(route.path) && route.meta.onNavbar;
         }
     }
 };

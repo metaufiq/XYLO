@@ -12,7 +12,6 @@ const routes = [
         name: 'home',
         component: Home,
         meta: {
-            // requiresAuth: true,
             guest: true,
         }
     },
@@ -30,7 +29,8 @@ const routes = [
         component: ContactManagement,
         meta: {
             guest: true,
-            navBarTitle: 'Contact Management'
+            navBarTitle: 'Contact Management',
+            onNavbar: true,
         }
     },
     {
@@ -39,7 +39,9 @@ const routes = [
         component: FollowUp,
         meta: {
             guest: true,
-            navBarTitle: 'Follow Up Customer'
+            navBarTitle: 'Follow Up Customer',
+            onNavbar: true,
+
         }
     },
     {
@@ -48,7 +50,9 @@ const routes = [
         component: ContactHistory,
         meta: {
             guest: true,
-            navBarTitle: 'Contact History'
+            navBarTitle: 'Contact History',
+            onNavbar: true,
+
         }
     },
 ]

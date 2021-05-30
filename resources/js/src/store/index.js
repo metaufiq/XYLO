@@ -7,7 +7,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         customerList: [],
-        agentList: []
+        agentList: [],
+        userData: {}
     },
     mutations: {
         setCustomerList(state, customerList) {
@@ -15,6 +16,14 @@ const store = new Vuex.Store({
         },
         setAgentList(state, agentList) {
             state.agentList = agentList
+        },
+        setUserData(state, userData) {
+            localStorage.setItem("userData", JSON.stringify(userData));
+            state.userData = userData;
+        },
+        clearUserData() {
+            localStorage.removeItem('userData')
+            location.reload()
         }
     },
     actions: {
@@ -40,7 +49,7 @@ const store = new Vuex.Store({
             };
             const res = await agentService.list(params);
             context.commit('setAgentList', res.data)
-        }
+        },
     }
 })
 
