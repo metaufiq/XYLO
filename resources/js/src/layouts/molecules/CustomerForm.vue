@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
             <label>Status Follow Up:</label>
-            <select class="custom-select" v-model="newCustomerStatus">
+            <select class="custom-select" v-model="newCustomerStatusId">
                 <option
                     v-for="status in customerStatusList"
                     v-bind:key="status.id"
@@ -59,7 +59,7 @@ export default {
             agentList: [],
             newCustomerName: this.customerName,
             newCustomerPhoneNumber: this.customerPhoneNumber,
-            newCustomerStatus: this.customerStatus,
+            newCustomerStatusId: this.customerStatus.id,
             newCustomerAgentId: this.customerAgent.id,
             customerStatusList: []
         };
@@ -72,7 +72,7 @@ export default {
             this.newCustomerPhoneNumber = val;
         },
         customerStatus: function(val) {
-            this.newCustomerStatus = val;
+            this.newCustomerStatusId = val.id;
         },
         customerAgent: function(val) {
             this.newCustomerAgentId = val.id;

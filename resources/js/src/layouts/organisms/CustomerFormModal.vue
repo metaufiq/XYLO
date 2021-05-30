@@ -76,7 +76,7 @@ export default {
             const {
                 newCustomerName,
                 newCustomerPhoneNumber,
-                newCustomerStatus,
+                newCustomerStatusId,
                 newCustomerAgentId
             } = this.$refs.customerForm;
             let params = {};
@@ -86,7 +86,7 @@ export default {
                         name: newCustomerName,
                         phone_number: newCustomerPhoneNumber,
                         agent_id: newCustomerAgentId,
-                        status_id: newCustomerStatus
+                        status_id: newCustomerStatusId
                     };
                     this.$store.dispatch("addCustomer", params);
                     break;
@@ -96,7 +96,7 @@ export default {
                         name: newCustomerName,
                         phone_number: newCustomerPhoneNumber,
                         agent_id: newCustomerAgentId,
-                        status_id: newCustomerStatus
+                        status_id: newCustomerStatusId
                     };
                     this.$store.dispatch("editCustomer", params);
                     break;
