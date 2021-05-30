@@ -34,8 +34,8 @@ class CustomerRepository
         $customer->email = $data->email;
         $customer->status_id = $data->status_id;
         $customer->agent_id = $data->agent_id;
-
-        return $customer->save();
+        $customer->save();
+        return $customer;
     }
     public function delete(CustomerDeleteInputRepository $data)
     {
