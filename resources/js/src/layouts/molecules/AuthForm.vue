@@ -78,7 +78,18 @@ export default {
             }
         },
         async onRegister() {
-            this.$router.push("/");
+            try {
+                const data = {
+                    email: this.email,
+                    password: this.password,
+                    role: this.userType
+                };
+                const res = await authService.register(data);
+                this.$store.commit("setUserData", res.data);
+                this.$router.push("/");
+            } catch (error) {
+                this.errorMessage = "Cannot use Email/Password";
+            }
         },
         onValidate(res) {
             if (res.data.role !== this.userType) {

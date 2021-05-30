@@ -6,8 +6,14 @@ const login = async (params) => {
     return { ...res.data };
 };
 
+const register = async (params) => {
+    const res = await service.Auth.post('register', params);
+    return { ...res.data };
+};
+
 const authService = {
-    login
+    login,
+    register
 };
 
 export default authService;

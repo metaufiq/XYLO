@@ -12,8 +12,14 @@ class AuthRepository
         return User::where([['email', '=', $data->email], ['password', '=', $data->password]])->first();
     }
 
-    public function register($data)
+    public function register(AuthRegisterInputRepository $data)
     {
+        $user = new User();
+        $user->email = $data->email;
+        $user->password = $data->password;
+        $user->role = $data->role;
+        $user->save();
+        return $user;
     }
 
     public function logout($data)
