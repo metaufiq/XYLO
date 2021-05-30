@@ -4,6 +4,7 @@ use App\Modules\Agent\Presentation\Controllers\AgentController;
 use App\Modules\Auth\Presentation\Controllers\AuthController;
 use App\Modules\Customer\Presentation\Controllers\CustomerController;
 use App\Modules\Customer\Presentation\Controllers\FollowUpStatusController;
+use App\Modules\History\Application\Services\FollowUpHistory\FollowUpHistoryService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,12 @@ Route::prefix('customer')->group(function () {
         Route::get('/list', [FollowUpStatusController::class, 'list']);
     });
 });
+
+Route::prefix('history')->group(function () {
+    Route::get('/list', [FollowUpHistoryService::class, 'list']);
+    Route::post('/add', [FollowUpHistoryService::class, 'add']);
+});
+
 Route::prefix('agent')->group(function () {
     Route::get('/list', [AgentController::class, 'list']);
 });
