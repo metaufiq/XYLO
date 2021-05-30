@@ -15,6 +15,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <span class="nav-link active">
+                        {{ this.$store.state.userData.email }}
+                    </span>
+                </li>
                 <li
                     class="nav-item"
                     v-for="route in routes"
@@ -57,6 +62,7 @@ export default {
     mounted() {},
     methods: {
         onLogout() {
+            this.$store.commit("clearUserData");
             this.$router.push("/welcome");
         },
         onNext(route) {
