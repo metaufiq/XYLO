@@ -2,7 +2,6 @@
 
 namespace Database\Factories\Modules\Customer\Domain\Models;
 
-use App\Modules\Customer\Domain\Models\Customer;
 use App\Modules\Customer\Domain\Models\FollowUpStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
