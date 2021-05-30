@@ -19,7 +19,7 @@ class CreateCustomersTable extends Migration
             $table->string('phone_number');
             $table->string('email');
             $table->foreignId('agent_id')->nullable()->constrained('users');
-            $table->foreignId('status')->constrained('follow_up_statuses');
+            $table->foreignId('status_id')->constrained('follow_up_statuses');
             $table->softDeletes();
             $table->timestamps();
         });

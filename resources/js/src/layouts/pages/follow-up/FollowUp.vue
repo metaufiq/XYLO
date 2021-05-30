@@ -46,7 +46,7 @@
                                     Phone: {{ customer.phone_number }}<br />
                                     Email: {{ customer.email }}
                                 </td>
-                                <td>{{ customer.status }}</td>
+                                <td>{{ customer.status.status }}</td>
                                 <td>
                                     {{
                                         customer.agent
