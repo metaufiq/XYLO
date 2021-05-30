@@ -26,6 +26,9 @@
                 />
             </div>
             <div class="form-group container">
+                <span class="text-danger">{{ this.errorMessage }}</span>
+            </div>
+            <div class="form-group container">
                 <div class="row">
                     <button
                         type="submit"
@@ -55,21 +58,32 @@ export default {
     data() {
         return {
             email: "",
-            password: ""
+            password: "",
+            errorMessage: ""
         };
     },
     methods: {
         async onLogin() {
-            const data = {
-                email: this.email,
-                password: this.password
-            };
-            const res = await authService.login(data);
-            this.$store.commit("setUserData", res.data);
-            this.$router.push("/");
+            try {
+                const data = {
+                    email: this.email,
+                    password: this.password
+                };
+                const res = await authService.login(data);
+                this.onValidate(res);
+                this.$store.commit("setUserData", res.data);
+                this.$router.push("/");
+            } catch (error) {
+                this.errorMessage = "Wrong Email/Password";
+            }
         },
         async onRegister() {
             this.$router.push("/");
+        },
+        onValidate(res) {
+            if (res.data.role !== this.userType) {
+                throw Error("Wrong Password/Email");
+            }
         }
     }
 };
