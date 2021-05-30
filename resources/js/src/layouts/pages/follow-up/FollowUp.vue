@@ -17,6 +17,7 @@
                     data-toggle="modal"
                     data-target="#customer-form-modal"
                     v-on:click="this.onOpenCustomerAddModal"
+                    v-if="this.$store.state.userData.role === 'admin'"
                 >
                     <i class="far fa-eye"></i>
                     Add New Customer
@@ -69,6 +70,10 @@
                                         type="button"
                                         class="btn btn-danger"
                                         v-on:click="onDeleteCustomer(customer)"
+                                        v-if="
+                                            $store.state.userData.role ===
+                                                'admin'
+                                        "
                                     >
                                         Delete
                                     </button>
@@ -87,7 +92,7 @@ export default {
     components: { CustomerFormModal },
     data() {
         return {
-            customerList: this.$store.state.customerList,
+            userRole: this.$store.state.userData.role,
             method: "",
             showModal: false,
             customerId: "",
