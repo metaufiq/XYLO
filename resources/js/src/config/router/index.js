@@ -12,35 +12,21 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+    const userDataString = localStorage.getItem('userData')
     if (to.matched.some(record => record.meta.requiresAuth)) {
-        if (localStorage.getItem('jwt') == null) {
+        if (userDataString == null) {
             next({
                 path: '/welcome',
                 params: { nextUrl: to.fullPath }
             })
         } else {
-            let user = JSON.parse(localStorage.getItem('user'))
-            if (to.matched.some(record => record.meta.isAdmin)) {
-                if (user.isAdmin) {
-                    next()
-                }
-                else {
-                    next({ name: 'home' })
-                }
-            } else {
-                next()
+            const userData = JSON.parse(userDataString)
+            if (!to.meta.access.includes(userData.role)) {
+                location.reload()
             }
-        }
-    } else if (to.matched.some(record => record.meta.guest)) {
-        if (localStorage.getItem('jwt') == null) {
             next()
-
         }
-        else {
-            next({ name: 'home' })
-        }
-    } else {
-        next()
     }
+    next()
 })
 export default router

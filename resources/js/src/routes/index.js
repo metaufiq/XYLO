@@ -1,9 +1,8 @@
 import Auth from '../layouts/pages/auth/Auth.vue'
 
 import Home from '../layouts/pages/home/Home.vue'
-import ContactManagement from '../layouts/pages/contact-management/ContactManagement'
 import ContactHistory from '../layouts/pages/contact-history/ContactHistory'
-import FollowUp from '../layouts/pages/follow-up/FollowUp'
+import CustomerList from '../layouts/pages/customer-list/CustomerList'
 
 
 const routes = [
@@ -12,7 +11,9 @@ const routes = [
         name: 'home',
         component: Home,
         meta: {
-            guest: true,
+            requiresAuth: true,
+            access: ['admin', 'agent']
+
         }
     },
     {
@@ -20,28 +21,29 @@ const routes = [
         name: 'welcome',
         component: Auth,
         meta: {
-            guest: true,
+
         }
     },
     {
         path: '/contact',
         name: 'contact',
-        component: ContactManagement,
+        component: CustomerList,
         meta: {
-            guest: true,
+            requiresAuth: true,
             navBarTitle: 'Contact Management',
             onNavbar: true,
+            access: ['admin']
         }
     },
     {
         path: '/follow-up',
         name: 'follow-up',
-        component: FollowUp,
+        component: CustomerList,
         meta: {
-            guest: true,
+            requiresAuth: true,
             navBarTitle: 'Follow Up Customer',
             onNavbar: true,
-
+            access: ['agent']
         }
     },
     {
@@ -49,10 +51,10 @@ const routes = [
         name: 'history',
         component: ContactHistory,
         meta: {
-            guest: true,
+            requiresAuth: true,
             navBarTitle: 'Contact History',
             onNavbar: true,
-
+            access: ['admin', 'agent']
         }
     },
 ]

@@ -15,11 +15,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <span class="nav-link active">
-                        {{ this.$store.state.userData.email }}
-                    </span>
-                </li>
                 <li
                     class="nav-item"
                     v-for="route in routes"
@@ -40,6 +35,11 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <span class="nav-link active">
+                        Login as {{ this.$store.state.userData.email }}
+                    </span>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#" v-on:click="onLogout"
                         >Logout</a
                     >
@@ -55,15 +55,14 @@ export default {
     data() {
         return {
             routes: routes,
-            disabledPathAdmin: ["/", "/welcome", "/history"],
-            disabledPathAgent: ["/", "/welcome"]
+            disabledPath: ["/", "/welcome"]
         };
     },
     mounted() {},
     methods: {
         onLogout() {
             this.$store.commit("clearUserData");
-            this.$router.push("/welcome");
+            this.$router.replace("/welcome");
         },
         onNext(route) {
             this.$router.push(route.path);
@@ -72,11 +71,11 @@ export default {
             return this.$route.path === route.path;
         },
         isRouteAllowed(route) {
-            let disabledPath =
-                this.$store.state.userData.role === "admin"
-                    ? this.disabledPathAdmin
-                    : this.disabledPathAgent;
-            return !disabledPath.includes(route.path) && route.meta.onNavbar;
+            return (
+                !this.disabledPath.includes(route.path) &&
+                route.meta.onNavbar &&
+                route.meta.access.includes(this.$store.state.userData.role)
+            );
         }
     }
 };
