@@ -2,17 +2,22 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import customerService from '../services/customerService';
 import agentService from '../services/agentService';
+import historyService from '../services/historyService';
 
 Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         customerList: [],
         agentList: [],
-        userData: {}
+        userData: {},
+        followUpHistoryList: []
     },
     mutations: {
         setCustomerList(state, customerList) {
             state.customerList = customerList
+        },
+        setFollowUpHistoryList(state, followUpHistoryList) {
+            state.followUpHistoryList = followUpHistoryList
         },
         setAgentList(state, agentList) {
             state.agentList = agentList
@@ -42,9 +47,17 @@ const store = new Vuex.Store({
             }
 
             const res = await customerService.list(params);
+            context.dispatch('getFollowUpHistoryList');
             context.commit('setCustomerList', res.data)
         },
-
+        async getFollowUpHistoryList(context) {
+            const params = {
+                user_id: JSON.parse(localStorage.getItem('userData')).id,
+                user_role: JSON.parse(localStorage.getItem('userData')).role,
+            }
+            const res = await historyService.list(params);
+            context.commit('setFollowUpHistoryList', res.data)
+        },
         async getAgentList(context) {
             const params = {
                 start: 0,
