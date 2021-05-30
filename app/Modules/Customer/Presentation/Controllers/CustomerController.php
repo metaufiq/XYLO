@@ -9,6 +9,7 @@ use App\Modules\Customer\Application\Services\Customer\CustomerDeleteInputServic
 use App\Modules\Customer\Application\Services\Customer\CustomerEditInputService;
 use App\Modules\Customer\Application\Services\Customer\CustomerListInputService;
 use App\Modules\Customer\Application\Services\Customer\CustomerService;
+use App\Modules\History\Presentation\Controllers\FollowUpHistoryController;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -29,8 +30,25 @@ class CustomerController extends Controller
     public function add(Request $request)
     {
         $service = new CustomerService();
-        $input = new CustomerAddInputService($request->input('name'), $request->input('phone_number'), 'taufiq@rgm.gmail.com', $request->input('agent_id'), $request->input('status_id'));
-        return $service->add($input);
+        dd($request->all());
+        $input = new CustomerAddInputService(
+            $request->input('name'),
+            $request->input('phone_number'),
+            'taufiq@rgm.gmail.com',
+            $request->input('agent_id'),
+            $request->input('status_id')
+        );
+        $newCustomer = $service->add($input);
+        $followUpHistoryController = new FollowUpHistoryController();
+        $followUpHistoryController->add($request->replace(
+            [
+                'agent_id' => $request->input('agent_id'),
+                'status_id' => $request->input('status_id'),
+                'customer_id' => $newCustomer->id
+            ]
+        ));
+
+        return;
     }
 
     public function edit(Request $request)

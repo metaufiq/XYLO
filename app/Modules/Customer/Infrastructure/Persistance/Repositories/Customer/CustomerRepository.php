@@ -23,8 +23,8 @@ class CustomerRepository
         $customer->email = $data->email;
         $customer->agent_id = $data->agent_id;
         $customer->status_id = $data->status_id;
-
-        return $customer->save();
+        $customer->save();
+        return $customer;
     }
     public function edit(CustomerEditInputRepository $data)
     {
